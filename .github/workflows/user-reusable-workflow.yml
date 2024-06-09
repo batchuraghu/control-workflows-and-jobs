@@ -76,6 +76,7 @@ jobs:
   print-deploy-result:
     needs: deploy
     runs-on: ubuntu-latest
+    steps:
       - name: Print deploy output
         # needs.deploy: need deploy job to complete
         # outputs.result : outputs is github function and result is defined in reusable workflow under as outputs.
