@@ -71,6 +71,15 @@ jobs:
     uses: ./.github/workflows/reusable-workflow.yml
     with:
       artifact-name: dist-files
+    #secrets:
+    #  some-secret: ${{ secrets.some-secret }}
+  print-deploy-result:
+    needs: deploy
+    runs-on: ubuntu-latest
+      - name: Print deploy output
+        # needs.deploy: need deploy job to complete
+        # outputs.result : outputs is github function and result is defined in reusable workflow under as outputs.
+        run: echo ${{ needs.deploy.outputs.result }}
   report:
     needs: [lint, deploy]
     if: failure()
